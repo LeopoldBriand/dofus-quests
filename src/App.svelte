@@ -13,11 +13,13 @@
     import Eye from 'lucide-svelte/icons/eye'
     import EyeClosed from 'lucide-svelte/icons/eye-closed'
     import Reload from 'lucide-svelte/icons/refresh-cw'
+    import Scale from 'lucide-svelte/icons/scale'
     import SlidersHorizontal from 'lucide-svelte/icons/sliders-horizontal'
     import Trophy from 'lucide-svelte/icons/trophy'
 
     import AlmanaxView from './lib/views/AlmanaxView.svelte'
     import BackupView from './lib/views/BackupView.svelte'
+    import CompareView from './lib/views/CompareView.svelte'
     import CategoryView from './lib/views/CategoryView.svelte'
     import HelpView from './lib/views/HelpView.svelte'
     import SelectedQuestView from './lib/views/SelectedQuestView.svelte'
@@ -108,6 +110,12 @@
                 onclick={() => swapWindowVisibility('backup')}
                 ondblclick={() => resetWindowPosition('backup')}
             />
+            <Button
+                Icon={Scale}
+                title="compare"
+                onclick={() => swapWindowVisibility('compare')}
+                ondblclick={() => resetWindowPosition('compare')}
+            />
         </Column>
         <Column classes="wrap">
             <Button
@@ -174,6 +182,7 @@
     <div class="windows">
         <SelectedQuestView />
         <BackupView />
+        <CompareView />
         <AlmanaxView />
         <CategoryView mode="quest" />
         <CategoryView mode="achievement" />

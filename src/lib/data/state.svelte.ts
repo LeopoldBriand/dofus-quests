@@ -240,6 +240,26 @@ export const setRawCompleted = (completedStr: string) => {
     completed.set(completedVal)
 }
 
+export const getProfileProgress = (profileId: string): string[] => {
+    const raw = localStorage.getItem(`completed-${profileId}`)
+    if (!raw) {
+        return []
+    }
+
+    try {
+        const decoded = decompressFromBase64(raw)
+        const parsed: StorageDataV2 = JSON.parse(decoded)
+
+        const data = parsed.v === 2
+            ? parse_v2(parsed)
+            : parseUnknownVersion(raw)
+
+        return data.completed
+    } catch {
+        return []
+    }
+}
+
 // Writables
 
 export const showCompleted = writable<boolean>(

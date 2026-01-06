@@ -1,11 +1,18 @@
 <script lang="ts">
     import type { Snippet } from 'svelte'
 
-    const { children, classes }: { children: Snippet; classes?: string } =
-        $props()
+    const {
+        children,
+        classes,
+        grow = undefined,
+    }: {
+        children: Snippet
+        classes?: string
+        grow?: number | undefined
+    } = $props()
 </script>
 
-<div class={classes}>
+<div class={classes} style={grow ? `flex: ${grow} 1 0%; min-width: 0;` : undefined}>
     {@render children()}
 </div>
 
